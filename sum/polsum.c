@@ -37,10 +37,10 @@ void printpol(struct pol p[max+1],int n)
         }
     }
 }
-void sum(struct pol p1[max+1],struct pol p2[max+1],int max_terms)
+void sum(struct pol p1[max+1],struct pol p2[max+1],int t1,int t2)
 {
     int i = 0,j = 0,k = 0;
-    while (i < max_terms && j < max_terms)
+    while (i < t1 && j < t2)
     {
         if(p1[i].e == p2[j].e)
         {
@@ -57,18 +57,31 @@ void sum(struct pol p1[max+1],struct pol p2[max+1],int max_terms)
             i++;
             k++;
         }
-        else if(p1[i].e < p2[j].e)
+        else 
         {
             result[k].c = p2[j].c;
             result[k].e = p2[j].e;
             j++;
             k++; 
         }
-
     }
-    printpol(result,max_terms);
+     while (i < t1)
+        {
+            result[k].c = p1[i].c;
+            result[k].e = p1[i].e;
+            i++;
+            k++;
+        }
+        while (j < t2)
+        {
+            result[k].c = p2[j].c;
+            result[k].c = p2[j].e;
+            j++;
+            k++;
+        }
+    
+    printpol(result,k);
 }
-
 void main()
 {
     int max_terms;
@@ -90,7 +103,7 @@ void main()
     printf("\n");
     printf("Sum of polynomials : ");
 
-    max_terms = f_terms > s_terms ? f_terms:s_terms;
-    sum(p1,p2,max_terms);
+    
+    sum(p1,p2,f_terms,s_terms);
 
 }
