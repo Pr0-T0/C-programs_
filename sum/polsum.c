@@ -75,11 +75,11 @@ void sum(struct pol p1[max+1],struct pol p2[max+1],int t1,int t2)
         while (j < t2)
         {
             result[k].c = p2[j].c;
-            result[k].c = p2[j].e;
+            result[k].e = p2[j].e;
             j++;
             k++;
         }
-    
+    printf("\n");
     printpol(result,k);
 }
 void main()
@@ -101,7 +101,8 @@ void main()
     printf("Second polynomial : ");
     printpol(p2,s_terms);
     printf("\n");
-    printf("Sum of polynomials : ");
+
+    //printf("Sum of polynomials : ");
 
     
     sum(p1,p2,f_terms,s_terms);
