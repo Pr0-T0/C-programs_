@@ -3,6 +3,7 @@
 #define max 10
 int f_terms,s_terms;
 
+
 struct pol{
     float c;
     int e;
@@ -50,7 +51,7 @@ void sum(struct pol p1[max+1],struct pol p2[max+1],int t1,int t2)
             j++;
             k++;
         }
-        else if(p1[i].e > p2[j].e)
+        else if(p1[i].e < p2[j].e)
         {
             result[k].c = p1[i].c;
             result[k].e = p1[i].e;
