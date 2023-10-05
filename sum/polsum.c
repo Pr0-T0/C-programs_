@@ -103,7 +103,7 @@ void main()
     printpol(p2,s_terms);
     printf("\n");
 
-    //printf("Sum of polynomials : ");
+    printf("Sum of polynomials : ");
 
     
     sum(p1,p2,f_terms,s_terms);
