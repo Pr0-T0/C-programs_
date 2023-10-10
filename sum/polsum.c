@@ -3,7 +3,6 @@
 #define max 10
 int f_terms,s_terms;
 
-
 struct pol{
     float c;
     int e;
