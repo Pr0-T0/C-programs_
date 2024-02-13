@@ -5,53 +5,44 @@ struct node{
     struct node *next;
 };
 struct node *head = NULL;
-void push(int item){
+void enqueue(int item){
     struct node *ptr,*temp;
     ptr = (struct node*)malloc(sizeof(struct node));
     if(ptr == NULL){
-        printf("OVERFLOW!");
+        printf("Overflow!");
     }
     else{
         ptr->data = item;
         if(head == NULL){
-            ptr->next = NULL;
             head = ptr;
+            ptr->next = NULL;
         }
         else{
             temp = head;
-            while(temp->next != NULL){
+            while (temp->next != NULL)
+            {
                 temp = temp->next;
             }
             temp->next = ptr;
-            ptr->next =NULL;
+            ptr->next = NULL;
         }
     }
 }
-void pop(){
-    struct node *ptr,*ptr1;
-    if(head == NULL){
-        printf("UNDERFLOW!");
-    }
-    else if(head->next == NULL){
-        free(head);  
-        head = NULL;               
-    }
+void dequeue(){
+    struct node *ptr;
+    if(head == NULL)
+        printf("Underflow");
     else{
         ptr = head;
-        while(ptr->next != NULL){
-            ptr1 = ptr;
-            ptr = ptr->next;
-        }
-        ptr1->next = NULL;
+        head = ptr->next;
         free(ptr);
     }
 }
 void display(){
     struct node *ptr;
     ptr = head;
-    if(ptr == NULL){
-        printf("UNDERFLOW!");
-    }
+    if(ptr == NULL)
+        printf("Undeflow!");
     else{
         while(ptr != NULL){
             printf("\t%d",ptr->data);
@@ -61,7 +52,7 @@ void display(){
 }
 int main(){
     int choice,item;
-    printf("Enter 1,2,3 for push,pop & display enter any other value for exit :)");
+    printf("Enter 1,2,3 for Enqueue , dequeue & display enter any other value for exit :)");
     while(1){
         printf("\nEnter choice :");
         scanf("%d",&choice);
@@ -70,10 +61,10 @@ int main(){
         case 1 : 
                 printf("Enter value to push : ");
                 scanf("%d",&item);
-                push(item);
+                enqueue(item);
                 break;
         case 2:
-                pop();
+                dequeue();
                 break;
         case 3:
                 display();
@@ -83,6 +74,5 @@ int main(){
                 break;
         }
     }
-   
     return 0;
 }
